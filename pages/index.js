@@ -1,13 +1,13 @@
 import config from "../config.json";
 import styled from "styled-components";
-import {CSSReset} from "../src/components/CSSReset"
-import {StyledTimeline} from "../src/components/TimeLine"
+import { CSSReset } from "../src/components/CSSReset"
+import { StyledTimeline } from "../src/components/TimeLine"
 import Menu from "../src/components/Menu"
 
 function HomePage() {
     return (
         <>
-            <CSSReset/>
+            <CSSReset />
             <div style={{
                 display: "flax",
                 flexDirection: "column",
@@ -32,7 +32,6 @@ const StyledHeader = styled.div`
             border-radius: 50%;
         }
         .user-info{
-            margin-top: 50px;
             display: flex;
             align-items:center;
             width: 100%;
@@ -40,10 +39,18 @@ const StyledHeader = styled.div`
             gap:16px;
         }
   `;
+const StyledBanner = styled.div`
+  background-color: blue;
+  background-image: url(${({ banner }) => banner});
+  height: 230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
 function Header() {
     return (
         <StyledHeader>
-            {/* {<img src="Banner"/>} */}
+            <StyledBanner banner={config.banner}/>
             <section className="user-info">
                 <img src={`https://github.com/${config.github}.png`} />
                 <div>
