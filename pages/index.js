@@ -1,7 +1,6 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset"
 import { StyledTimeline } from "../src/components/TimeLine"
 import Menu from "../src/components/Menu"
 
@@ -10,7 +9,6 @@ function HomePage() {
 
     return (
         <>
-            <CSSReset />
             <div style={{
                 display: "flax",
                 flexDirection: "column",
@@ -29,6 +27,7 @@ export default HomePage
 
 
 const StyledHeader = styled.div`
+background-color: ${({ theme }) => theme.backgroundLevel1};
         img {
             width: 80px;
             height: 80px;
@@ -44,7 +43,7 @@ const StyledHeader = styled.div`
   `;
 const StyledBanner = styled.div`
     margin-top:50px;
-    background-color: blue;
+    background-color: gray;
     background-image: url(${({ banner }) => banner});
     /* background-image: url(${config.banner}); */
     height: 230px;
