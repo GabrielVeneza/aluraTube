@@ -6,7 +6,7 @@ export default function video(){
 
     return(
         <div>
-            Vídeo! <br></br>
+            Vídeo!
             {contexto.mode}
             <button onClick={() => contexto.toggleMode()}>
                 Trocar Modo
