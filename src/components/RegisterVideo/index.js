@@ -66,6 +66,7 @@ export default function RegisterVideo() {
                             <h2>Cadastro de Vídeos</h2>
                             <br />
                             <input
+                                required
                                 name="titulo"
                                 placeholder="Título do Vídeo"
                                 value={formCadastro.values.titulo}
@@ -73,12 +74,14 @@ export default function RegisterVideo() {
                             />
 
                             <input
+                                required
                                 name="url"
                                 placeholder="Url do Vídeo"
                                 value={formCadastro.values.url}
                                 onChange={formCadastro.handleChange}
                             />
                             <input
+                                required
                                 name="playlist"
                                 placeholder="playlist do Vídeo: Músicas, Jogos, etc"
                                 value={formCadastro.values.playlist}
