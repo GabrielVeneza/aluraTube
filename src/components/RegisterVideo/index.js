@@ -9,7 +9,7 @@ function getThumbnail(url) {
 
 //Custom Hook
 function useForm() {
-    const [values, setValues] = React.useState({ titulo: "", url: "" });
+    const [values, setValues] = React.useState({ titulo: "", url: "", playlist: "" });
     return {
         values,
         handleChange: (evento) => {
@@ -42,20 +42,20 @@ export default function RegisterVideo() {
                 ? (
                     <form onSubmit={(evento) => {
                         evento.preventDefault();
-
-                          // Contrato entre o nosso Front e o BackEnd
-                          supabase.from("video").insert({
+                        window.location.reload(false)
+                        // Contrato entre o nosso Front e o BackEnd
+                        supabase.from("video").insert({
                             title: formCadastro.values.titulo,
                             url: formCadastro.values.url,
                             thumb: getThumbnail(formCadastro.values.url),
-                            playlist: "jogos",
-                         })
-                         .then((oqueveio) => {
-                            console.log(oqueveio);
-                         }) 
-                         .catch((err) => {
-                            console.log(err);
-                         })
+                            playlist: formCadastro.values.playlist,
+                        })
+                            .then((oqueveio) => {
+                                console.log(oqueveio);
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            })
 
                         setFormVisivel(false);
                         formCadastro.clearForm();
@@ -64,7 +64,7 @@ export default function RegisterVideo() {
                             <button type="button" className="close-modal" onClick={() => setFormVisivel(false)}>X</button>
 
                             <h2>Cadastro de Vídeos</h2>
-                            <br/>
+                            <br />
                             <input
                                 name="titulo"
                                 placeholder="Título do Vídeo"
@@ -78,10 +78,17 @@ export default function RegisterVideo() {
                                 value={formCadastro.values.url}
                                 onChange={formCadastro.handleChange}
                             />
+                            <input
+                                name="playlist"
+                                placeholder="playlist do Vídeo: Músicas, Jogos, etc"
+                                value={formCadastro.values.playlist}
+                                onChange={formCadastro.handleChange}
+                            />
                             <div className="thumbPreview">
-                                <p>Preview da thumbnail</p>
-                                <img src={getThumbnail(formCadastro.values.url)}/>
+                                <h2>Preview da thumbnail</h2>
+                                <img src={getThumbnail(formCadastro.values.url)} />
                             </div>
+
                             <button type="submit">
                                 Cadastrar
                             </button>
