@@ -67,4 +67,7 @@ export const StyledRegisterVideo = styled.div`
     color: ${({ theme }) => theme.textColorBase};
     background-color: ${({ theme }) => theme.backgroundBase};
   }
+  .thumbPreview img{
+    max-width: 100%;
+  }
 `;
