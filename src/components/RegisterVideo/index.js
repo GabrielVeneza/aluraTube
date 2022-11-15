@@ -7,15 +7,6 @@ function getThumbnail(url) {
     return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`;
 }
 
-function getVideoId(url) {
-    const videoId = url.split("v=")[1];
-    const ampersandPosition = videoId.indexOf("&");
-    if (ampersandPosition !== -1) {
-        return videoId.substring(0, ampersandPosition);
-    }
-    return videoId;
-}
-
 //Custom Hook
 function useForm() {
     const [values, setValues] = React.useState({ titulo: "", url: "" });
@@ -72,6 +63,8 @@ export default function RegisterVideo() {
                         <div>
                             <button type="button" className="close-modal" onClick={() => setFormVisivel(false)}>X</button>
 
+                            <h2>Cadastro de Vídeos</h2>
+                            <br/>
                             <input
                                 name="titulo"
                                 placeholder="Título do Vídeo"
@@ -85,6 +78,10 @@ export default function RegisterVideo() {
                                 value={formCadastro.values.url}
                                 onChange={formCadastro.handleChange}
                             />
+                            <div className="thumbPreview">
+                                <p>Preview da thumbnail</p>
+                                <img src={getThumbnail(formCadastro.values.url)}/>
+                            </div>
                             <button type="submit">
                                 Cadastrar
                             </button>
